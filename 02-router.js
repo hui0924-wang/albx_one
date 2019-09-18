@@ -1,5 +1,7 @@
 const express = require('express');
-const pageController = require('./controllers/pageController.js');
+const pageController = require('./controllers/pageController');
+const usersController = require('./controllers/usersController');
+
 const router = express.Router();
 
 // 读取前台页面
@@ -18,7 +20,9 @@ router.get('/', pageController.getIndexPage)
       .get('/admin/settings',pageController.getAdminSettingsPage)
       .get('/admin/slides',pageController.getAdminSlidesPage)
       .get('/admin/users',pageController.getAdminUsersPage)
-      
+      // 读取登录页面
+      .get('/login',pageController.getLoginPage)
+      .post('/login',usersController.login)
 
       
 

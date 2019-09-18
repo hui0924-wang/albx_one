@@ -1,6 +1,7 @@
 // 引入模块
 const express = require('express');
 const router = require('./02-router.js');
+const bodyParser = require('body-parser');
 
 // 创建服务器对象
 const app = express();
@@ -17,5 +18,12 @@ app.set('view engine', 'ejs');
 // 配置ejs资源的默认目录,后期在渲染的时候可以只需要指定相对路径就可以了
 app.set('views', 'views');
 
+// 注册中间件
+// urlencoded解析器
+app.use(bodyParser.urlencoded({ extended: false }));
+// json解析器
+app.use(bodyParser.json());
+
 // 注册路由
 app.use(router);
+

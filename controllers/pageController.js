@@ -4,9 +4,11 @@ module.exports = {
   getIndexPage(req, res) {
     res.render('index.ejs');
   },
+  // 1.2获取前台详情页
   getDetailPage(req, res) {
     res.render('detail.ejs');
   },
+  // 1.3获取前台列表页
   getlistPage(req, res) {
     res.render('list.ejs');
   },
@@ -31,24 +33,35 @@ module.exports = {
   getAdminPWDResetPage(req, res) {
     res.render('admin/password-reset.ejs');
   },
+  // 2.6 写文章页面
   getAdminPostAddPage(req, res) {
     res.render('admin/post-add.ejs');
   },
+  // 2.7 所有文章页面
   getAdminPostsPage(req, res) {
     res.render('admin/posts.ejs');
   },
+  // 2.8 个人资料页面
   getAdminProfilePage(req, res) {
     res.render('admin/profile.ejs');
   },
+  // 2.9 网站设置页面
   getAdminSettingsPage(req, res) {
     res.render('admin/settings.ejs');
   },
+  // 2.10图片轮播
   getAdminSlidesPage(req, res) {
     res.render('admin/slides.ejs');
   },
+  // 2.11用户页面
   getAdminUsersPage(req, res) {
     res.render('admin/users.ejs');
   },
+
+  // 3.登录页面
+  getLoginPage(rea, res) {
+    res.render('admin/login.ejs');
+  }
 
 
 }
