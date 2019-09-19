@@ -1,4 +1,5 @@
-const userModel=require('../models/userModel');
+const userModel = require('../models/userModel');
+
 module.exports = {
   login(req, res) {
     let { password, email } = req.body
@@ -11,10 +12,20 @@ module.exports = {
       } else {
         if (data) {
           if (data.password == password) {
+            // session方式
+            req.session.isLogin = 'true';
             res.json({
               code: 200,
-              msg: '登陆成功'
+              msg: '登录成功'
             })
+            // cookie方式：
+            // //将登陆成功的状态以Set-Cookie的方式写入响应头，返回
+            // res.writeHead(200,{'Set-Cookie':'isLogin=true'});
+            // res.end(JSON.stringify({
+            //   code:200,
+            //   msg:'登录成功'
+            // }))
+
           } else {
             res.json({
               code: 400,
@@ -28,6 +39,14 @@ module.exports = {
           })
         }
       }
+    })
+  },
+  loginOut(req, res) {
+    // res.redirect('/login');
+    req.session.isLogin = '';
+    res.json({
+      code:200,
+      msg:'退出成功'
     })
   }
 }

@@ -23,6 +23,8 @@ router.get('/', pageController.getIndexPage)
       // 读取登录页面
       .get('/login',pageController.getLoginPage)
       .post('/login',usersController.login)
+      // 退出 返回登录页面
+      .get('/loginOut',usersController.loginOut)
 
       
 

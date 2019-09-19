@@ -1,3 +1,5 @@
+// const querystring = require('querystring');
+
 module.exports = {
   //  1.获取前台页面
   // 1.1获取前台首页
@@ -15,7 +17,22 @@ module.exports = {
   // 2.获取后台页面
   // 2.1后台主页
   getAdminIndexPage(req, res) {
-    res.render('admin/index.ejs');
+
+    // if (req.session.isLogin && req.session.isLogin == 'true') {
+      res.render('admin/index.ejs');
+    // } else {
+    //  res.redirect('/login');
+    // }
+
+    // cookie方式
+    // let obj = querystring.parse(req.headers.cookie);
+    // console.log(req);
+    // if (obj.isLogin && obj.isLogin == 'true') {
+    //   res.render('admin/index.ejs');
+    // } else {
+    //   res.redirect('/login');
+    // }
+
   },
   // 2.2分类目录页面
   getAdminCategoriesPage(req, res) {
