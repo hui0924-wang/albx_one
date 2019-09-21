@@ -20,6 +20,7 @@ module.exports = {
         // })
         res.json({
           code: 200,
+          msg:'获取数据成功',
           data
         })
       }

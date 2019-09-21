@@ -2,21 +2,28 @@
 $(function () {
   let pageSize = 2;
   let pageNum = 1
-  function init() {
+  function init(obj) {
+    console.log(obj);
     $.ajax({
       type: 'get',
       url: '/getAllPostsList',
       dataType: 'json',
       data: {
         pageNum,
-        pageSize
+        pageSize,
+        // // 展开运算符：它可以将对象的成员一个一个展开
+        ...obj
       },
       success: function (res) {
         var html = template('postListTemp', res.data);
         // console.log(html);
         console.log(res);
-        $('tbody').html(html);
-        setPage(Math.ceil(res.data.cnt / pageSize));
+        if (res.code == 200) {
+          // 生成文章数据列表结构
+          $('tbody').html(html);
+          // 生成分页结构
+          setPage(Math.ceil(res.data.cnt / pageSize));
+        }
       }
     });
   };
@@ -32,8 +39,14 @@ $(function () {
       //当单击操作按钮的时候, 执行该函数, 调用ajax渲染页面
       onPageClicked: function (event, originalEvent, type, page) {
         // 把当前点击的页码赋值给pageNum, 调用ajax,渲染页面
+        // 修改全局页码
         pageNum = page;
-        init();
+        // 重新获取数据生成动态结构
+        var obj = {
+          cate: $('.cateSelector').val(),
+          statu: $('.statuSelector').val()
+        };
+        init(obj);
       }
     })
   };
@@ -51,5 +64,18 @@ $(function () {
       });
       $('.cateSelector').html(html);
     }
+  });
+
+  // 实现筛选
+  $('.btn-search').on('click', function () {
+    //  获取筛选条件
+    var obj = {
+      cate: $('.cateSelector').val(),
+      statu: $('.statuSelector').val()
+    };
+    // 重置当前页码
+    pageNum = 1;
+    // 发起ajax请求
+    init(obj);
   })
 })
