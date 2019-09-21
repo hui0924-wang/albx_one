@@ -2,7 +2,7 @@ const express = require('express');
 const pageController = require('./controllers/pageController');
 const usersController = require('./controllers/usersController');
 const postsController=require('./controllers/postsController')
-
+const cateController=require('./controllers/cateController')
 const router = express.Router();
 
 // 读取前台页面
@@ -28,6 +28,8 @@ router.get('/', pageController.getIndexPage)
       .get('/loginOut',usersController.loginOut)
       // 获取所有文章数据请求
       .get('/getAllPostsList',postsController.getAllPostsList)
+      // 获取分类数据的请求
+      .get('/getCateList',cateController.getCateList)
 
       
 

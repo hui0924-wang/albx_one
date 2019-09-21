@@ -1,6 +1,6 @@
 
 $(function () {
-  let pageSize = 3;
+  let pageSize = 2;
   let pageNum = 1
   function init() {
     $.ajax({
@@ -36,5 +36,20 @@ $(function () {
         init();
       }
     })
-  }
+  };
+
+
+  // 实现分类数据的动态加载--下拉列表
+  $.ajax({
+    type: 'get',
+    url: '/getCateList',
+    dataType: 'json',
+    success: function (res) {
+      let html = `<option value="all">所有分类</option>`
+      res.data.forEach(value => {
+        html += `<option value="${value.id}">${value.name}</option>`
+      });
+      $('.cateSelector').html(html);
+    }
+  })
 })
