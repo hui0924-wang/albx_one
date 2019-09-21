@@ -36,7 +36,7 @@ app.use(session({
 
 // 注册路由中间件，当app每次接受请求时，都会触发这个中间件
 app.use(function (req, res, next) {
-  console.log(req.url);
+  // console.log(req.url);
   if (req.session.isLogin && req.session.isLogin == 'true' || req.url == '/login' || req.url.indexOf('/admin') == -1) {
     next();
   } else {

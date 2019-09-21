@@ -1,6 +1,7 @@
 const express = require('express');
 const pageController = require('./controllers/pageController');
 const usersController = require('./controllers/usersController');
+const postsController=require('./controllers/postsController')
 
 const router = express.Router();
 
@@ -25,6 +26,8 @@ router.get('/', pageController.getIndexPage)
       .post('/login',usersController.login)
       // 退出 返回登录页面
       .get('/loginOut',usersController.loginOut)
+      // 获取所有文章数据请求
+      .get('/getAllPostsList',postsController.getAllPostsList)
 
       
 

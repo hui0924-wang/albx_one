@@ -7,7 +7,6 @@ $(function () {
         if (res.code == 200) {
           location.href = '/login';
         }
-
       }
     })
   })
