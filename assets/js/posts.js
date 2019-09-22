@@ -77,5 +77,12 @@ $(function () {
     pageNum = 1;
     // 发起ajax请求
     init(obj);
+  });
+
+
+  // 下拉列表切换事件
+  $('.userSize').on('change', function () {
+    pageSize = $(this).val()
+    init()
   })
 })

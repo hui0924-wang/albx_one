@@ -2,7 +2,8 @@ const express = require('express');
 const pageController = require('./controllers/pageController');
 const usersController = require('./controllers/usersController');
 const postsController=require('./controllers/postsController')
-const cateController=require('./controllers/cateController')
+const cateController=require('./controllers/cateController');
+const uploadController = require('./controllers/uploadController');
 const router = express.Router();
 
 // 读取前台页面
@@ -30,6 +31,10 @@ router.get('/', pageController.getIndexPage)
       .get('/getAllPostsList',postsController.getAllPostsList)
       // 获取分类数据的请求
       .get('/getCateList',cateController.getCateList)
+
+      // 文件上传请求
+      .post('/uploadFile',uploadController.uploadFile)
+     
 
       
 
