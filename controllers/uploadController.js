@@ -22,13 +22,14 @@ module.exports = {
         console.log(fields);
         console.log(files.img.path);
         res.json({
-          code:200,
-          msg:'文件上传成功',
-          img:files.img.path
-        })      
+          code: 200,
+          msg: '文件上传成功',
+          img: files.img.path
+        })
 
       }
     })
-  }
+  },
+  
 }
 
