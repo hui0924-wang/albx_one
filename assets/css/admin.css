@@ -70,6 +70,10 @@ body {
   color: #f6f6f6;
   background-color: #243443;
 }
+.aside .nav li  a.active  {
+  color: #f6f6f6;
+  background-color: #243443;
+}
 
 .aside .nav a:hover,
 .aside .nav a:focus {

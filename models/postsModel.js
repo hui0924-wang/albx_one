@@ -42,11 +42,46 @@ module.exports = {
           if (err2) {
             callBack(err2)
           } else {
-            console.log(result2[0].cnt);
+            // console.log(result2[0].cnt);
             callBack(null, { data: result, cnt: result2[0].cnt })
           }
         })
         // callBack(null, result)
+      }
+    })
+  },
+  addpost(obj, callBack) {
+    // let sql = `insert into posts values (null,'${obj.slug}','${obj.title}','${obj.feature}','${obj.created}',
+    // '${obj.content}','${obj.views}','${obj.likes}','${obj.status}','${obj.user_id}','${obj.category}')`;
+    // 在mysql第三方模块中，提供了参数化查询的方式，就是使用?做为参数占位符以些来简化sql语句
+    // 它可以自动的生成sql语句
+    let sql = 'insert into posts set ?'
+    connection.query(sql, obj, (err, result) => {
+      if (err) {
+        callBack(err);
+      } else {
+        callBack(null, result);
+        // console.log(result);
+      }
+    })
+  },
+  getPostById(id, callback) {
+    var sql = 'select * from posts where id = ' + id;
+    connection.query(sql, (err, results) => {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null, results[0])
+      }
+    })
+  },
+  editPost(obj, callback) {
+    var sql = 'update posts set ? where id = ?'
+    connection.query(sql, [obj, obj.id], (err) => {
+      if (err) {
+        callback(err)
+      } else {
+        callback(null)
       }
     })
   }

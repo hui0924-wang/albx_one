@@ -4,6 +4,7 @@ const usersController = require('./controllers/usersController');
 const postsController=require('./controllers/postsController')
 const cateController=require('./controllers/cateController');
 const uploadController = require('./controllers/uploadController');
+const optionsController=require('./controllers/optionsController')
 const router = express.Router();
 
 // 读取前台页面
@@ -31,14 +32,24 @@ router.get('/', pageController.getIndexPage)
       .get('/getAllPostsList',postsController.getAllPostsList)
       // 获取分类数据的请求
       .get('/getCateList',cateController.getCateList)
+      // 编辑文章 静态页面请求
+      .get('/getPostById',postsController.getPostById)
 
       // 文件上传请求
       .post('/uploadFile',uploadController.uploadFile)
-     
 
+      // 新增文章请求
+      .post('/addpost',postsController.addpost)
+      .post('/editPost',postsController.editPost)
+      // 发送分类数据 编辑请求
+      .post('/editCate',cateController.editCate)
+      // 发送添加分类数据请求
+      .post('/addCate',cateController.addCate)
+      .get('/delCateById',cateController.delCateById)
+      // 获取导航菜单数据请求
+      .get('/getMenuList',optionsController.getMenuList)
+      // 发送导航菜单数据 添加请求
+      .post('/addMenu',optionsController.addMenu)
       
-
-
-
 
 module.exports = router;

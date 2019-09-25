@@ -24,5 +24,5 @@ $(function () {
     menuSettings.siblings('a').removeClass('collapsed').attr('aria-expanded', true);
   }
 
-  $('#' + routerName).addClass('active');
+  $("#"+ routerName).addClass('active');
 })

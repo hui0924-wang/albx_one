@@ -3,7 +3,7 @@ $(function () {
   let pageSize = 2;
   let pageNum = 1
   function init(obj) {
-    console.log(obj);
+    // console.log(obj);
     $.ajax({
       type: 'get',
       url: '/getAllPostsList',

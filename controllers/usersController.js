@@ -14,6 +14,7 @@ module.exports = {
           if (data.password == password) {
             // session方式
             req.session.isLogin = 'true';
+            req.session.currentUser = data;
             res.json({
               code: 200,
               msg: '登录成功'
@@ -45,8 +46,8 @@ module.exports = {
     // res.redirect('/login');
     req.session.isLogin = '';
     res.json({
-      code:200,
-      msg:'退出成功'
+      code: 200,
+      msg: '退出成功'
     })
   }
 }

@@ -19,8 +19,8 @@ module.exports = {
           msg: '文件上传失败'
         })
       } else {
-        console.log(fields);
-        console.log(files.img.path);
+        // console.log(fields);
+        // console.log(files.img.path);
         res.json({
           code: 200,
           msg: '文件上传成功',
