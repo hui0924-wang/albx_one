@@ -33,5 +33,22 @@ module.exports = {
         })
       }
     })
-  }
+  },
+  delMenu(req, res) {
+    let title = req.query.title;
+    // console.log(title);
+    optionsModel.delMenu(title, (err) => {
+      if (err) {
+        res.json({
+          code: 400,
+          msg: '删除失败'
+        })
+      } else {
+        res.json({
+          code: 200,
+          msg: '删除成功'
+        })
+      }
+    })
+  },
 }

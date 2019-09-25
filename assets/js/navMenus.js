@@ -32,5 +32,21 @@ $(function () {
   })
 
 
-
+  // 单条导航数据的删除
+  $('tbody').on('click', '.btnDel', function () {
+    if (!confirm('确定要删除吗？')) {
+      return;
+    }
+    // console.log($('.btnDel').data('title'));
+    $.ajax({
+      type: 'get',
+      url: '/delMenu',
+      data: { title: $(this).data('title') },
+      dataType: 'json',
+      success: function (res) {
+        console.log(res);
+        init();
+      }
+    })
+  })
 })

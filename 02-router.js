@@ -50,6 +50,8 @@ router.get('/', pageController.getIndexPage)
       .get('/getMenuList',optionsController.getMenuList)
       // 发送导航菜单数据 添加请求
       .post('/addMenu',optionsController.addMenu)
+      // 发送删除导航菜单数据 请求
+      .get('/delMenu',optionsController.delMenu)
       
 
 module.exports = router;
