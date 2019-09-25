@@ -38,8 +38,9 @@ router.get('/', pageController.getIndexPage)
       // 文件上传请求
       .post('/uploadFile',uploadController.uploadFile)
 
-      // 新增文章请求
+      // 新增  文章请求
       .post('/addpost',postsController.addpost)
+      // 编辑  文章请求
       .post('/editPost',postsController.editPost)
       // 发送分类数据 编辑请求
       .post('/editCate',cateController.editCate)
@@ -52,6 +53,10 @@ router.get('/', pageController.getIndexPage)
       .post('/addMenu',optionsController.addMenu)
       // 发送删除导航菜单数据 请求
       .get('/delMenu',optionsController.delMenu)
+      // 网络设置  动态显示请求
+      .get('/getSiteOptions',optionsController.getSiteOptions)
+      // 网络设置 编辑请求
+      .post('/updateSiteOptions',optionsController.updateSiteOptions)
       
 
 module.exports = router;

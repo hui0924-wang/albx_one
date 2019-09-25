@@ -51,4 +51,39 @@ module.exports = {
       }
     })
   },
+  getSiteOptions(req, res) {
+    optionsModel.getSiteOptions((err, data) => {
+      if (err) {
+        res.json({
+          code: 400,
+          msg: '获取数据失败'
+        })
+      } else {
+        res.json({
+          code: 200,
+          msg: '获取数据成功',
+          data
+        })
+      }
+    })
+  },
+  updateSiteOptions(req, res) {
+    let obj = req.body;
+    obj.comment_status = obj.comment_status == 'on' ? '1' : '0';
+    obj.comment_reviewed =obj.comment_reviewed == 'on' ? '1' : '0';
+    console.log(obj);
+    optionsModel.updateSiteOptions(obj, (err) => {
+      if (err) {
+        res.json({
+          code: 400,
+          msg: '保存数据失败'
+        })
+      } else {
+        res.json({
+          code: 200,
+          msg: '保存数据成功',
+        })
+      }
+    })
+  }
 }

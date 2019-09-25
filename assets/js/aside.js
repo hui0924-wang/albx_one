@@ -4,10 +4,9 @@ $(function () {
   // console.log(location.href);
   let routerName = '';
   let index = str.indexOf('?');
-  if (!index == -1) {
+  if (!(index == -1)) {
     // 有参数
     routerName = str.substring(str.lastIndexOf('/') + 1, index);
-
   } else {
     // 没有参数
     routerName = str.substring(str.lastIndexOf('/') + 1);
@@ -24,5 +23,5 @@ $(function () {
     menuSettings.siblings('a').removeClass('collapsed').attr('aria-expanded', true);
   }
 
-  $("#"+ routerName).addClass('active');
+  $("#" + routerName).addClass('active');
 })

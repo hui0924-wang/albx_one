@@ -1,5 +1,7 @@
 
 $(function () {
+  alert('addd');
+  // 1.文件上传
   $('#feature').on('change', function () {
     // files:用户所选择文件列表 伪数组
     // 获取选择文件对象
@@ -32,7 +34,7 @@ $(function () {
 
   });
 
-  // 分类
+  // 2.分类
   $.ajax({
     type: 'get',
     url: '/getCateList',
@@ -46,13 +48,14 @@ $(function () {
     }
   });
 
-  // 富文本框的添加和使用
-  // 1.创建一个富文本框控件(实例对象)来覆盖你所指定的id号为content的文本域
+  // 3.富文本框的添加和使用
+  // 3.1.创建一个富文本框控件(实例对象)来覆盖你所指定的id号为content的文本域
   CKEDITOR.replace('content');
- let params = itcast.getParams(location.search);
-  console.log(params);
+  let pa = itcast.getParams(location.search);
+  console.log(location.search);
+  console.log(pa);
 
-  // 实现文件新增
+  // 4.实现文件新增
   $('.btn-add').on('click', function () {
     // CKEDITOR.instances:可以获取当前页面中所有的富文本框对象集合
     // console.log(CKEDITOR.instances);
@@ -64,7 +67,7 @@ $(function () {
 
     // 实现富文本框与文本域的同步
     CKEDITOR.instances.content.updateElement();
-    if (params.id) {
+    if (pa.id) {
       opt('/editPost')
     } else {
       opt('/addpost');
@@ -93,14 +96,13 @@ $(function () {
     })
   }
 
-
-
-
-  if (params.id) {
+  // 5.编辑  文章页面的动态显示
+  if (pa.id) {
+    alert('kkkk');
     $.ajax({
       type: 'get',
       url: '/getPostById',
-      data: { id: params.id },
+      data: { id: pa.id },
       dataType: 'json',
       success: function (res) {
         console.log(res);
